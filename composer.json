@@ -1,0 +1,23 @@
+{
+    "name": "cubit/evo",
+    "description": "Upgrade toolset to update php version without loosing your hair.",
+    "authors": [
+        {
+            "name": "Marcelo Dorelis",
+            "email": "dorelismarcelo@gmail.com"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "Evo\\": "src/"
+        }
+    },
+    "require-dev": {
+        "rector/rector": "^2.3",
+        "phpstan/phpstan": "^2.1",
+        "squizlabs/php_codesniffer": "^3.13",
+        "phpcompatibility/php-compatibility": "^9.3",
+        "phpstan/phpstan-deprecation-rules": "^2.0",
+        "phpstan/phpstan-strict-rules": "^2.0"
+    },
+}
