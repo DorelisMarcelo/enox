@@ -1,5 +1,5 @@
 {
-    "name": "cubit/evo",
+    "name": "mob/enox",
     "description": "Upgrade toolset to update php version without loosing your hair.",
     "authors": [
         {
@@ -9,7 +9,7 @@
     ],
     "autoload": {
         "psr-4": {
-            "Evo\\": "src/"
+            "Enox\\": "src/"
         }
     },
     "require-dev": {
@@ -19,5 +19,5 @@
         "phpcompatibility/php-compatibility": "^9.3",
         "phpstan/phpstan-deprecation-rules": "^2.0",
         "phpstan/phpstan-strict-rules": "^2.0"
-    },
+    }
 }
