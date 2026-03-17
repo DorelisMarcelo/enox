@@ -46,8 +46,6 @@ function createRectorConfig(): RectorConfigBuilder
 
         // Code quality improvements
         ->withSets([
-            SetList::CODE_QUALITY,
-            SetList::CODING_STYLE,
             SetList::DEAD_CODE,
             SetList::PRIVATIZATION,
             SetList::TYPE_DECLARATION,
@@ -82,13 +80,6 @@ function createRectorConfig(): RectorConfigBuilder
             StaticArrowFunctionRector::class,
             StaticClosureRector::class,
             EncapsedStringsToSprintfRector::class,
-
-            // Naming rules (not in standard sets)
-            RenameVariableToMatchMethodCallReturnTypeRector::class,
-            RenameParamToMatchTypeRector::class,
-            RenameVariableToMatchNewTypeRector::class,
-            RenamePropertyToMatchTypeRector::class,
-            RenameForeachValueVariableToMatchExprVariableRector::class,
         ])
 
         // Configure file extensions
