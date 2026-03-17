@@ -47,6 +47,15 @@ class EnoxClient
                 echo "Starting Rector upgrade...\n";
                 $arguments = ArgumentsMapper::map();
 
+                if (empty($arguments['path'])) {
+                    echo "Error: Path is required. Use --path=<directory>\n";
+                    exit(1);
+                }
+
+                echo "Starting PHP upgrade \n";
+                echo "Target path: {$arguments['path']}\n";
+                echo "Dry run: " . ($arguments['dryRun'] ? 'Yes' : 'No') . "\n\n";
+
                 $command = [
                         'RECTOR_PATH=' . escapeshellarg($arguments['path']),
                         'php8.2 vendor/bin/rector process',

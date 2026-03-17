@@ -31,15 +31,6 @@ function createRectorConfig(): RectorConfigBuilder
 {
     $config = ArgumentsMapper::map();
 
-    if (empty($config['path'])) {
-        echo "Error: Path is required. Use --path=<directory>\n";
-        exit(1);
-    }
-
-    echo "Starting PHP upgrade \n";
-    echo "Target path: {$config['path']}\n";
-    echo "Dry run: " . ($config['dryRun'] ? 'Yes' : 'No') . "\n\n";
-
     return RectorConfig::configure()
         ->withPaths([$config['path']])
 

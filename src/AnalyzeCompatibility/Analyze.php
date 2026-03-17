@@ -2,6 +2,8 @@
 
 namespace Enox\AnalyzeCompatibility;
 
+use RuntimeException;
+
 class Analyze
 {
     private array $config;
@@ -344,7 +346,7 @@ class Analyze
         $process = proc_open($commandString, $descriptor, $pipes);
 
         if (!is_resource($process)) {
-            throw new \RuntimeException("Failed to execute command: {$commandString}");
+            throw new RuntimeException("Failed to execute command: {$commandString}");
         }
 
         $stdout = stream_get_contents($pipes[1]);
@@ -369,10 +371,19 @@ class Analyze
     {
         $data = json_decode($output, true);
 
-        if ($data === null) {
+        if(empty($data)) {
+            echo "❌ PHPStan result is empty. Analysis aborted\n";
+            exit(1);
+        }
+
+        if (!empty($data['errors'])) {
             // Invalid JSON, save raw output for debugging
-            file_put_contents($this->reportsPath . '/phpstan_invalid.json', $output);
-            return;
+            file_put_contents($this->reportsPath . '/phpstan_invalid.json', $data['errors']);
+            echo "❌ PHPStan runtime fatal errors. Analysis aborted\n";
+            foreach ($data['errors'] as $error) {
+                echo $error . "\n";
+            }
+            exit(1);
         }
 
         // Filter out files with no errors
