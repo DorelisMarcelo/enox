@@ -58,6 +58,7 @@ class EnoxClient
 
                 $command = [
                         'RECTOR_PATH=' . escapeshellarg($arguments['path']),
+                        'RECTOR_AUTOLOAD_PATH=' . escapeshellarg($arguments['autoloadPath']),
                         'php8.2 vendor/bin/rector process',
                         '--config src/UpgradeCodebase/RectorConfig.php',
                         '--ansi'

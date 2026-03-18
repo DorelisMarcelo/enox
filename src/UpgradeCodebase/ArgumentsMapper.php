@@ -13,6 +13,7 @@ class ArgumentsMapper
 
             $config = [
                 'path' => getenv('RECTOR_PATH') ?: '',
+                'autoloadPath' => getenv('RECTOR_AUTOLOAD_PATH') ?: '',
                 'dryRun' => false,
             ];
 
@@ -29,6 +30,9 @@ class ArgumentsMapper
                     case '--dry-run':
                     case '-d':
                         $config['dryRun'] = (int)$value == 1;
+                        break;
+                    case '--autoload-path':
+                        $config['autoloadPath'] = $value;
                         break;
                 }
             }
