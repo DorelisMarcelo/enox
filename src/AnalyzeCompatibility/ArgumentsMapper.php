@@ -18,6 +18,7 @@ class ArgumentsMapper
             'targetPhpVersion' => '8.2',
             'outputFormat' => 'json',
             'memoryLimit' => '8G',
+            'bleedingEdge' => true,
             'analysisName' => getenv('ANALYSIS_NAME') ?: null, // null to use default timestamp
         ];
 
@@ -63,7 +64,7 @@ class ArgumentsMapper
             exit(1);
         }
 
-        if (!is_dir($config['path'])) {
+        if (!is_dir($config['path']) && !is_file($config['path'])) {
             echo "Error: Directory '{$config['path']}' does not exist.\n";
             exit(1);
         }

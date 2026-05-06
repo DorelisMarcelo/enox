@@ -26,7 +26,7 @@ function createRectorConfig(): RectorConfigBuilder
             SetList::PHP_82,
         ])
         // Additional configurations
-        ->withParallel(16)  // Parallel processing
+        //->withParallel(16)  // Parallel processing
         ->withMemoryLimit('8G')
         ->withImportNames(false, false, false)  // Keep imports as-is to avoid noisy git diffs
         ->withSkip([])

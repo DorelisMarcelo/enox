@@ -18,6 +18,7 @@ class Analyze
             'phpstanLevel' => 5,
             'targetPhpVersion' => '8.2',
             'outputFormat' => 'json',
+            'bleedingEdge' => true,
             'memoryLimit' => '8G',
             'analysisName' => date('Y-m-d_H-i-s'), // Default timestamp
         ], ArgumentsMapper::map());
@@ -125,7 +126,7 @@ class Analyze
             exit(1);
         }
 
-        if (!is_dir($this->config['path'])) {
+        if (!is_dir($this->config['path']) && !is_file($this->config['path'])) {
             echo "Error: Directory '{$this->config['path']}' does not exist.\n";
             exit(1);
         }
@@ -342,6 +343,8 @@ class Analyze
             1 => ['pipe', 'w'], // stdout
             2 => ['pipe', 'w'], // stderr
         ];
+
+        echo "\n\nRunning command: $commandString \n\n";
 
         $process = proc_open($commandString, $descriptor, $pipes);
 

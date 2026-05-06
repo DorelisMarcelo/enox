@@ -42,7 +42,7 @@ class ArgumentsMapper
                 exit(1);
             }
 
-            if (!is_dir($config['path'])) {
+            if (!is_dir($config['path']) && !is_file($config['path'])) {
                 echo "Error: Directory '{$config['path']}' does not exist.\n";
                 exit(1);
             }
