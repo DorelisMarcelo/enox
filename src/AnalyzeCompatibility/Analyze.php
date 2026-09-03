@@ -57,7 +57,7 @@ class Analyze
         echo "Reports will be saved to: {$this->reportsPath}\n\n";
 
         // Run PHPStan analysis
-        $this->runPhpStanAnalysis();
+        //$this->runPhpStanAnalysis();
 
         // Run PHPCompatibility analysis
         $this->runPhpCompatibilityAnalysis();
@@ -314,7 +314,6 @@ class Analyze
                 }
             } else {
                 // Invalid JSON, save raw output for debugging
-                rename($this->reportsPath . '/phpcompatibility.json', $this->reportsPath . '/phpcompatibility_invalid.json');
                 file_put_contents(
                     $this->reportsPath . '/phpcompatibility_raw.txt',
                     $output
